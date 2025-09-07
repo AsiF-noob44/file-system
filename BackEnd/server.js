@@ -138,12 +138,18 @@ class FileServer {
 
   start() {
     this.server = http.createServer(this.handleRequest.bind(this));
-    this.server.listen(this.port, () => {
-      console.log(`Server listening on port ${this.port}`);
+    const port = process.env.PORT || this.port;
+    this.server.listen(port, () => {
+      console.log(`Server listening on port ${port}`);
     });
   }
 }
 
 const server = new FileServer(3000);
 
-server.start();
+// For Vercel serverless functions
+if (process.env.VERCEL) {
+  module.exports = server.handleRequest.bind(server);
+} else {
+  server.start();
+}
