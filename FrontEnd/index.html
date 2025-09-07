@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>File Manager Server</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📁</text></svg>">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="app-header">
+            <h1>File Manager</h1>
+            <p>Manage your text files easily</p>
+        </header>
+
+        <section class="create-section">
+            <h2>Create New File</h2>
+            <div class="form-group">
+                <label for="fileName">File Name</label>
+                <div class="file-input-group">
+                    <input type="text" id="fileName" placeholder="Enter filename">
+                    <select id="fileExtension" class="extension-select">
+                        <option value=".txt">.txt</option>
+                        <option value=".md">.md</option>
+                        <option value=".log">.log</option>
+                        <option value=".csv">.csv</option>
+                        <option value=".json">.json</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="fileContent">File Content</label>
+                <textarea id="fileContent" placeholder="Enter your content here..."></textarea>
+            </div>
+            <button class="btn-create" onclick="createFile()">
+                <span class="btn-icon">+</span>
+                Create File
+            </button>
+        </section>
+
+        <section class="files-section">
+            <div class="section-header">
+                <h2>Your Files</h2>
+                <button class="btn-refresh" onclick="loadFiles()">
+                    Refresh
+                </button>
+            </div>
+            <div id="fileList" class="file-list">
+                <div class="empty-state">
+                    <p>No files found. Create your first file above!</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
