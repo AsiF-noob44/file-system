@@ -146,10 +146,3 @@ class FileServer {
 }
 
 const server = new FileServer(3000);
-
-// For Vercel serverless functions
-if (process.env.VERCEL) {
-  module.exports = server.handleRequest.bind(server);
-} else {
-  server.start();
-}
